@@ -1,46 +1,73 @@
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmpService {
 	List<Employee> empList = new ArrayList<Employee>();
-	public void getInput() {
-		Scanner sc=new Scanner(System.in);
-		int choice;
-		do {
-			System.out.println("Enter 1 to add, 2 to view, 3 to update, 4 to delete, 5 to view all, 10 to exit");
-			choice = sc.nextInt();
-			switch(choice) {
-				case 1:
-					addNewEmp();
-					break;
-				case 2:
-					System.out.println("Enter Emp Id");
-					int x= sc.nextInt();
-					view(x);
-					break;
-				case 3:
-					System.out.println("Enter Emp Id");
-					x= sc.nextInt();
-					update(x);
-					break;
-				case 4:
-					System.out.println("Enter Emp Id");
-					x= sc.nextInt();
-					delete(x);
-					break;
-				case 5:
-					viewAll();
-					break;
-				case 10:
-					System.out.println("Exiting...");
-				default:
-					System.out.println("Invalid entry please try again!!");
+//	public void getInput() {
+		
+	public void importFromFile() {
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("C:\\Users\\SatwinderSingh\\Desktop\\userInput.txt"));
+			String line = reader.readLine();
+			while (line != null) {
+				String[] arr = new String[10];
+				arr = line.split(" ");
+				for(int i=0;i<arr.length;i++)
+				{
+					
+				}
+				Employee e=new Employee();
+				e.setId(Integer.parseInt(arr[0]));
+				e.setName(arr[1]);
+				e.setAge(Integer.parseInt(arr[2]));
+				e.setDesign(arr[3]);
+				e.setDept(arr[4]);
+				e.setCountry(arr[5]);
+				empList.add(e);
+				
+				//System.out.println(line);
+				line = reader.readLine();
 			}
-			
-			
-		}while(choice!=10);
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	  
 	}
+	
+	public void exportToFile() {
+//		EmployeeExport e_Export = new EmployeeExport();
+		EmpService e_Service = new EmpService();
+		File file = new File("C:\\Users\\SatwinderSingh\\Desktop\\userExport.txt");
+		FileWriter fr;
+		try {
+			fr = new FileWriter(file, true);
+			BufferedWriter br = new BufferedWriter(fr);
+			PrintWriter pr = new PrintWriter(br);
+			empList.forEach(e -> {
+			String line = e.getId()+","+e.getName()+","+e.getAge()+","+e.getDesign()+","+e.getDept()+","+e.getCountry();
+			System.out.println(line);
+			pr.println(line);
+		});
+			pr.close();
+			br.close();
+			fr.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
+	
+	
 	public void addNewEmp() {
 		Scanner sc=new Scanner(System.in);
 		System.out.print("Enter Id : ");

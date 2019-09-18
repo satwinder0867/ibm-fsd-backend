@@ -50,6 +50,9 @@ public class Employee {
 		this.dept = dept;
 		this.country = country;
 	}
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Employee [id= " + id + ", name= " + name + ", age= " + age + ", Total designation=" + design + ", department= " + dept + ", country= " + country+ "]\n";
