@@ -1,3 +1,5 @@
+package employee;
+
 public class Employee {
 	String name;
 	int age;
@@ -41,22 +43,32 @@ public class Employee {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
 	public Employee(int id, String name, int age, String design, String dept, String country) {
 		super();
-		this.id= id;
 		this.name = name;
 		this.age = age;
+		this.id = id;
 		this.design = design;
 		this.dept = dept;
 		this.country = country;
 	}
-	public Employee() {
+	
+public Employee() {
 		// TODO Auto-generated constructor stub
 	}
+	//	public Employee(int Id, String Name, int Age, String Design, String Dept, String Country) {
+//		super();
+//		this.name = name;
+//		this.age = age;
+//		this.id = id;
+//		this.design = design;
+//		this.dept = dept;
+//		this.country = country;
+//	}
 	@Override
 	public String toString() {
-		return "Employee [id= " + id + ", name= " + name + ", age= " + age + ", Total designation=" + design + ", department= " + dept + ", country= " + country+ "]\n";
+		return "Employee [name=" + name + ", age=" + age + ", id=" + id + ", design=" + design + ", dept=" + dept
+				+ ", country=" + country + "]";
 	}
-		
-
 }
