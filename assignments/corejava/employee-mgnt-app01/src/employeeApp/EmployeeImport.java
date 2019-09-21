@@ -1,5 +1,4 @@
-package employee;
-
+package employeeApp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,14 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpImport extends Thread{
+public class EmployeeImport extends Thread{
 	//EmployeeService es = new EmployeeService();
 	List<Employee> employeeList = new ArrayList<Employee>();
 	public void run() {
 		System.out.println("started import");
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader("src/employee/UserInput.txt"));
+			reader = new BufferedReader(new FileReader("src/employeeApp/employeeData.txt"));
 			String line = reader.readLine();
 			while (line != null) {
 				String[] arr = new String[10];

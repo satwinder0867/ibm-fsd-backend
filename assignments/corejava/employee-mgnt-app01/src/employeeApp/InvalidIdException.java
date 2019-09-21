@@ -1,4 +1,4 @@
-package employee;
+package employeeApp;
 
 public class InvalidIdException extends Exception{
 	public InvalidIdException(String s) {

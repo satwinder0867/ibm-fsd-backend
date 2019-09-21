@@ -1,5 +1,4 @@
-package employee;
-
+package employeeApp;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,12 +8,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpExport  extends Thread{
+public class EmployeeExport extends Thread{
 	List<Employee> employeeList = new ArrayList<Employee>();
 	public void run() {
 		EmployeeService e_Service = new EmployeeService();
 		//String line = "";
-		File file = new File("src/employee/userOutput.txt");
+		File file = new File("src/employeeApp/EmployeeDataOut.txt");
 		FileWriter fr;
 		try {
 			fr = new FileWriter(file, true);
